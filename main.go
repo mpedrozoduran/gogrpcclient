@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "github.com/mpedrozoduran/gogrpctest/timeproto"
+	pb "github.com/mpedrozoduran/gogrpcserver/timeproto"
 	"google.golang.org/grpc"
 	"log"
 	"time"
@@ -17,9 +17,9 @@ func main() {
 	}
 	defer conn.Close()
 	client := pb.NewTimeManagerClient(conn)
-	ctx, cancel := context.WithTimeout(context.Background(), 10 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	res, err := client.GetTime(ctx, &pb.TimeRequest{ClientTime:"2020-04-23 14:47:00"})
+	res, err := client.GetTime(ctx, &pb.TimeRequest{ClientTime: "2020-04-23 14:47:00"})
 	if err != nil {
 		log.Printf("Error when calling GetTime: %v", err)
 	}
