@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = ".;timeproto";
+
+package timemanager;
+
+service TimeManager {
+  rpc GetTime(TimeRequest) returns (TimeResponse) {}
+}
+
+message TimeRequest {
+  string client_time = 1;
+}
+
+message TimeResponse {
+  string server_time = 1;
+}
